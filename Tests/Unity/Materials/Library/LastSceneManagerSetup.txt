@@ -1,0 +1,4 @@
+sceneSetups:
+- path: "Assets/Puntero l\xE1ser.unity"
+  isLoaded: 1
+  isActive: 1
