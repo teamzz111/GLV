@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/nicoloso100/Desktop/prueba.apk
+C:/Users/´nicoloso100/Desktop/tcp.apk
 SceneListBegin?
 Assets/Scenes/Menu.unity
 SceneListEnd?

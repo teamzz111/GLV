@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCP Connection Android", "Assembly-CSharp.csproj", "{30EBFD09-18BB-A9EC-FBF0-5120FCB9761C}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCP Connection Android", "TCP Connection Android.csproj", "{A33AEFB8-7809-27A4-C338-A9E661FA4D85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{30EBFD09-18BB-A9EC-FBF0-5120FCB9761C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30EBFD09-18BB-A9EC-FBF0-5120FCB9761C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30EBFD09-18BB-A9EC-FBF0-5120FCB9761C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30EBFD09-18BB-A9EC-FBF0-5120FCB9761C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A33AEFB8-7809-27A4-C338-A9E661FA4D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A33AEFB8-7809-27A4-C338-A9E661FA4D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A33AEFB8-7809-27A4-C338-A9E661FA4D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A33AEFB8-7809-27A4-C338-A9E661FA4D85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
