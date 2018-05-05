@@ -1,8 +1,8 @@
 Android
 PlayerPath?
-C:/Users/´nicoloso100/Desktop/Mapa1.apk
+C:/Users/´nicoloso100/Desktop/Escenario1.apk
 SceneListBegin?
-Assets/Scenes/Map 2/Map22.unity
+Assets/Nokobot/ColonialShip/01_Scenes/DisplayScene.unity
 SceneListEnd?
 176f67aae4ec7273cfef37fd8876bd9a Assembly-CSharp.dll:.GvrDropdown
 047843e8fc8efc789ac0ebf61a6343c3 Assembly-CSharp.dll:GoogleVR.HelloVR.HeadsetDemoManager
@@ -21,7 +21,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 c08b196716247885d3b27f7f282b2568 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ImageEffectBase
 a30beadf4d109f44144b9a9f42e61cbf Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.BlurOptimized
-23b50ef73e2c1a8a76860d35bcbbf8fc Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.GlobalFog
+b80381921c911f7dd9564e8fcab806e2 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.GlobalFog
 daabd8d8800a87cff11f866c4d06a232 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ContrastStretch
 31ac2865258ddbc8f82525645ca875c2 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.VignetteAndChromaticAberration
 228303069e44eb1f7f68e3c0519e6057 Assembly-CSharp.dll:.GvrVideoPlayerTexture

@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/´nicoloso100/Desktop/Prueba/prueba.exe
+C:/Users/´nicoloso100/Desktop/TCPConnection/tcp.exe
 SceneListBegin?
 Assets/Scenes/Menu.unity
 SceneListEnd?

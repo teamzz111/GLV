@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Map 2/Map22.unity
+- path: Assets/Nokobot/ColonialShip/01_Scenes/DisplayScene.unity
   isLoaded: 1
   isActive: 1
