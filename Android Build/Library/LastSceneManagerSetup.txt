@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Scenes/Map 3/Map3.unity
+  isLoaded: 1
+  isActive: 1
