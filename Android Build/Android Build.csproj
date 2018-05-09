@@ -221,6 +221,15 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="TextMeshPro-2017.3-Editor">
+      <HintPath>Assets/Scenes/Menu/Map-voxel scifi/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="TextMeshPro-2017.3-Runtime">
+      <HintPath>Assets/Scenes/Menu/Map-voxel scifi/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.ProtocolBuffers">
+      <HintPath>Assets/Shared Assets/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
@@ -233,15 +242,6 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="Google.ProtocolBuffers">
-      <HintPath>Assets/Shared Assets/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
-    </Reference>
-    <Reference Include="TextMeshPro-2017.3-Runtime">
-      <HintPath>Assets/Scenes/Menu/Map-voxel scifi/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="TextMeshPro-2017.3-Editor">
-      <HintPath>Assets/Scenes/Menu/Map-voxel scifi/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Editor.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scenes\Map 3\Map-Nokobot\Scripts\Displace.cs" />
@@ -253,6 +253,7 @@
     <Compile Include="Assets\Scenes\Map 3\Map-Nokobot\Scripts\WaterBase.cs" />
     <Compile Include="Assets\Scenes\Map 3\Map-Nokobot\Scripts\WaterTile.cs" />
     <Compile Include="Assets\Scenes\Map 3\Map-Nokobot\Water\Scripts\WaterBasic.cs" />
+    <Compile Include="Assets\Scripts\TCPConPhone.cs" />
     <Compile Include="Assets\Shared Assets\GoogleVR\Legacy\Scripts\Audio\GvrAudio.cs" />
     <Compile Include="Assets\Shared Assets\GoogleVR\Legacy\Scripts\Audio\GvrAudioListener.cs" />
     <Compile Include="Assets\Shared Assets\GoogleVR\Legacy\Scripts\Audio\GvrAudioRoom.cs" />
