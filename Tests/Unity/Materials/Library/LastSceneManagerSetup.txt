@@ -1,4 +1,4 @@
 sceneSetups:
-- path: "Assets/Puntero l\xE1ser.unity"
+- path: Assets/Mirror/Mirror.unity
   isLoaded: 1
   isActive: 1
