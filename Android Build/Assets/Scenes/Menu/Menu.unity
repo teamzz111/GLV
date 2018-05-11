@@ -1078,6 +1078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MessageBox: {fileID: 915401389}
   IP: {fileID: 693624481}
+  ErrorSound: {fileID: 0}
 --- !u!4 &174357266
 Transform:
   m_ObjectHideFlags: 0
@@ -2420,7 +2421,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 53.582336
+  field of view: 75
   orthographic: 0
   orthographic size: 1.66
   m_Depth: -1
