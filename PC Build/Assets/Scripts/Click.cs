@@ -61,6 +61,10 @@ public class Click : MonoBehaviour {
                 MapsClose = true;
                 TCPConPC.OnPlayCommands = "Desconnect|";
             }
+            else if (name.Equals("Lloyd Button"))
+            {
+                SceneManager.LoadScene(1);
+            }
             else if(name.Length == 10 && name.Substring(0, 9).Equals("Escenario"))
             {
                 TCPConPC.OnPlayCommands = "Message|" + DropdownText;

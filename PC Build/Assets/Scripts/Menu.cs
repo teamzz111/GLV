@@ -8,36 +8,38 @@ public class Menu : MonoBehaviour {
     public GameObject Camera;
 
     private bool OpenMenu = false;
+    private bool DondeAnim = false;
+
+    private Quaternion Rot;
 
     void Start () {
-        menu.SetActive(false);
+        Rot = Camera.transform.rotation;
     }
 	
 	void Update () {
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown(KeyCode.Escape) && (Camera.transform.rotation == Rot || Camera.transform.rotation.y == -1))
         {
-            if(menu.transform.rotation.y == 0)
+            if(Camera.transform.rotation.y == 0)
             {
                 Camera.GetComponent<Animation>().Play("Menu");
+                OpenMenu = true;
+                DondeAnim = false;
             }
-            else if(menu.transform.rotation.y == 180)
+            else if(Camera.transform.rotation.y == -1)
             {
                 Camera.GetComponent<Animation>().Play("Resume");
+                menu.GetComponent<Animation>().Play("Hide");
+                OpenMenu = false;
             }
-            OpenMenu = true;
         }
         if(OpenMenu == true)
         {
-            if(menu.transform.rotation.y == 180)
+            if (Camera.transform.rotation.y == -1 && DondeAnim == false)
             {
-                menu.SetActive(true);
-                OpenMenu = false;
+                menu.GetComponent<Animation>().Play("Show");
+                DondeAnim = true;
             }
-            else if (menu.transform.rotation.y == 0)
-            {
-                menu.SetActive(false);
-                OpenMenu = false;
-            }
+            
         }
     }
 }

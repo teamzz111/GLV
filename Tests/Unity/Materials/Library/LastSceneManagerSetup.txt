@@ -1,1 +1,4 @@
-sceneSetups: []
+sceneSetups:
+- path: "C:/Users/\xB4nicoloso100/Documents/Git/GLV/PC Build/Assets/Scenes/Map 1/MapPC.unity"
+  isLoaded: 1
+  isActive: 1
