@@ -105,6 +105,7 @@ public class MoveItems : MonoBehaviour {
             }
             else if (Input.GetKey(KeyCode.C) || MoveControls.CenterClick == false)
             {
+                WhatObject.transform.position += new Vector3(0, 0.3f, 0);
                 WhatObject.transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
