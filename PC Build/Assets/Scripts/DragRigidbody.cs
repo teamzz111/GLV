@@ -18,45 +18,43 @@ namespace UnityStandardAssets.Utility
 		private void Update()
 		{
 
-			if (!Input.GetMouseButtonDown(0))
+			if (Input.GetMouseButtonDown(0) && MoveControls.AnyControl == true)
 			{
-				return;
-			}
-
-			var mainCamera = FindCamera();
+                var mainCamera = FindCamera();
 
 
-			RaycastHit hit = new RaycastHit();
-			if (
-				!Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition).origin,
-					mainCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, 100,
-					Physics.DefaultRaycastLayers))
-			{
-				return;
-			}
+                RaycastHit hit = new RaycastHit();
+                if (
+                    !Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition).origin,
+                        mainCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, 100,
+                        Physics.DefaultRaycastLayers))
+                {
+                    return;
+                }
 
-			if (!hit.rigidbody || hit.rigidbody.isKinematic)
-			{
-				return;
-			}
+                if (!hit.rigidbody || hit.rigidbody.isKinematic)
+                {
+                    return;
+                }
 
-			if (!m_SpringJoint)
-			{
-				var go = new GameObject("Rigidbody dragger");
-				Rigidbody body = go.AddComponent<Rigidbody>();
-				m_SpringJoint = go.AddComponent<SpringJoint>();
-				body.isKinematic = true;
-			}
+                if (!m_SpringJoint)
+                {
+                    var go = new GameObject("Rigidbody dragger");
+                    Rigidbody body = go.AddComponent<Rigidbody>();
+                    m_SpringJoint = go.AddComponent<SpringJoint>();
+                    body.isKinematic = true;
+                }
 
-			m_SpringJoint.transform.position = hit.point;
-			m_SpringJoint.anchor = Vector3.zero;
+                m_SpringJoint.transform.position = hit.point;
+                m_SpringJoint.anchor = Vector3.zero;
 
-			m_SpringJoint.spring = k_Spring;
-			m_SpringJoint.damper = k_Damper;
-			m_SpringJoint.maxDistance = k_Distance;
-			m_SpringJoint.connectedBody = hit.rigidbody;
+                m_SpringJoint.spring = k_Spring;
+                m_SpringJoint.damper = k_Damper;
+                m_SpringJoint.maxDistance = k_Distance;
+                m_SpringJoint.connectedBody = hit.rigidbody;
 
-			StartCoroutine("DragObject", hit.distance);
+                StartCoroutine("DragObject", hit.distance);
+            }
 		}
 
 		private IEnumerator DragObject(float distance)

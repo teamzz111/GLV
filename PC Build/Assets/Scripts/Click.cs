@@ -15,6 +15,8 @@ public class Click : MonoBehaviour {
     public TextMeshProUGUI MessageBox;
     public Text DropdownText;
 
+    public static string QueLab;
+
     private bool VRConOpen = false;
     private bool VRConClose = false;
     private bool MapsOpen = false;
@@ -63,6 +65,12 @@ public class Click : MonoBehaviour {
             }
             else if (name.Equals("Lloyd Button"))
             {
+                QueLab = "lloid";
+                SceneManager.LoadScene(1);
+            }
+            else if (name.Equals("Young Button"))
+            {
+                QueLab = "young";
                 SceneManager.LoadScene(1);
             }
             else if(name.Length == 10 && name.Substring(0, 9).Equals("Escenario"))

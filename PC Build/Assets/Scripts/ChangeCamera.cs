@@ -6,7 +6,6 @@ using UnityEngine;
 public class ChangeCamera : MonoBehaviour {
 
     private GameObject Camera;
-    private bool OneActive = false;
     private Vector3 InitVec;
     private Quaternion InitRot;
     private Quaternion Rot;

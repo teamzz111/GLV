@@ -57,14 +57,14 @@ public class MirrorReflectionScript : MonoBehaviour
 		
 		reflectionCamera.cullingMask = ~(1<<4) & m_ReflectLayers.value;
 		reflectionCamera.targetTexture = m_ReflectionTexture;
-		GL.SetRevertBackfacing (true);
+        GL.invertCulling = true;
 		reflectionCamera.transform.position = newpos;
 		Vector3 euler = cam.transform.eulerAngles;
 		reflectionCamera.transform.eulerAngles = new Vector3(0, euler.y, euler.z);
 		reflectionCamera.Render();
 		reflectionCamera.transform.position = oldpos;
-		GL.SetRevertBackfacing (false);
-		Material[] materials = rend.sharedMaterials;
+        GL.invertCulling = false;
+        Material[] materials = rend.sharedMaterials;
 		foreach( Material mat in materials ) {
 			if( mat.HasProperty("_ReflectionTex") )
 				mat.SetTexture( "_ReflectionTex", m_ReflectionTexture );

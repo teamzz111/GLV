@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Support2
+  - Laser
+  - rack
+  - Plane
+  - Support1
+  - FrameLaser
+  - FramePlane
+  - FrameSupport1
+  - FrameSupport2
+  - Framerack
   layers:
   - Default
   - TransparentFX
