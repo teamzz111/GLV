@@ -16,10 +16,12 @@ public class Young : MonoBehaviour {
     public InputField LambdaText;
     public InputField mText;
 
-    public GameObject Laser1;
+    public GameObject Laser1A; public GameObject Pointer1A;
+    public GameObject Laser1D; public GameObject Pointer1D;
+    public GameObject Laser2A; public GameObject Pointer2A;
+    public GameObject Laser2D; public GameObject Pointer2D;
 
     private float RackPlus;
-    private float RackMinus;
     private float RackCenter;
 
     private float Lambda;
@@ -27,18 +29,24 @@ public class Young : MonoBehaviour {
     private float m;
     private float L;
     private float d;
+    private float y;
 
-    private Vector3 Laser1Pos;
-    private float Laser1Lenght;
+    private Vector3 LasersPos;
+    private float LaserLenght;
+    private float Angle;
+    private float MiddlePos;
+    private float StartAngle;
+    private float ExtraLaserX;
+    private float ExtraLaserY;
 
     void Start () {
         RackPlus = Rack.transform.position.x + 2.31f;
-        RackMinus = Rack.transform.position.x - 2f;
-        Laser1Pos = Laser1.transform.position;
+        LasersPos = Laser1A.transform.position;
+        StartAngle = Laser1A.transform.eulerAngles.z;
     }
 	
 	void Update () {
-        if (!Montaje.MontajeCompleto)
+        if (Montaje.MontajeCompleto)
         {
             L = (RackPlus - Rack.transform.position.x) * 0.2f;
             SetValueL.text = L.ToString("f3");
@@ -56,7 +64,8 @@ public class Young : MonoBehaviour {
                             m = (float)Convert.ToDouble(mText.text);
                             
                             SetValued.text = d.ToString();
-                            SetValuey.text = ((m * Lambda * L) / d).ToString("f4");
+                            y = (m * Lambda * L) / d;
+                            SetValuey.text = y.ToString("f4");
                             MakeLaser();
                         }
                         catch
@@ -104,8 +113,65 @@ public class Young : MonoBehaviour {
     private void MakeLaser()
     {
         RackCenter = Rack.transform.position.x - 0.07f;
-        Laser1Lenght = (RackCenter - RackMinus) / 2f;
-        Laser1.transform.position = new Vector3(RackCenter - Laser1Lenght, Laser1Pos.y, Laser1Pos.z);
-        Laser1.transform.localScale = new Vector3(0.03f, Laser1Lenght, 0.03f);
+
+        y = y / 0.2f;
+
+        Pointer1A.transform.position = new Vector3(RackPlus - 0.06f, LasersPos.y + y - 0.02f, LasersPos.z);
+        Pointer1D.transform.position = new Vector3(RackPlus - 0.06f, LasersPos.y - y - 0.02f, LasersPos.z);
+
+        LaserLenght = ((float)Math.Sqrt(Math.Pow(y, 2) + Math.Pow((RackPlus - RackCenter), 2))) / 2f;
+        Angle = (float)Math.Asin(y / (LaserLenght * 2));
+        MiddlePos = RackPlus - ((RackPlus - RackCenter) / 2f);
+
+        if(y >= 0.9)
+        {
+            Pointer1A.SetActive(false);
+            Pointer1D.SetActive(false);
+            ExtraLaserX = 10 * (float)Math.Cos(Angle);
+            ExtraLaserY = 10 * (float)Math.Sin(Angle);
+            Laser1A.transform.localScale = new Vector3(0.03f, 5, 0.03f);
+            Laser1A.transform.position = new Vector3(RackCenter + (ExtraLaserX / 2), LasersPos.y + (ExtraLaserY / 2), LasersPos.z);
+        }
+        else
+        {
+            Pointer1A.SetActive(true);
+            Pointer1D.SetActive(true);
+            Laser1A.transform.localScale = new Vector3(0.03f, LaserLenght, 0.03f);
+            Laser1A.transform.position = new Vector3(MiddlePos, LasersPos.y + (y / 2), LasersPos.z);
+        }
+        Laser1A.transform.eulerAngles = new Vector3(0, 0, StartAngle + (Angle * (180f / (float)Math.PI)));
+        Laser1D.transform.localScale = new Vector3(0.03f, LaserLenght, 0.03f);
+        Laser1D.transform.eulerAngles = new Vector3(0, 0, StartAngle - (Angle * (180f / (float)Math.PI)));
+        Laser1D.transform.position = new Vector3(MiddlePos, LasersPos.y - (y / 2), LasersPos.z);
+
+        y = 2 * y;
+
+        Pointer2A.transform.position = new Vector3(RackPlus - 0.06f, LasersPos.y + y - 0.02f, LasersPos.z);
+        Pointer2D.transform.position = new Vector3(RackPlus - 0.06f, LasersPos.y - y - 0.02f, LasersPos.z);
+
+        LaserLenght = ((float)Math.Sqrt(Math.Pow(y, 2) + Math.Pow((RackPlus - RackCenter), 2))) / 2f;
+        Angle = (float)Math.Asin(y / (LaserLenght * 2));
+        MiddlePos = RackPlus - ((RackPlus - RackCenter) / 2f);
+
+        if (y >= 0.9)
+        {
+            Pointer2A.SetActive(false);
+            Pointer2D.SetActive(false);
+            ExtraLaserX = 10 * (float)Math.Cos(Angle);
+            ExtraLaserY = 10 * (float)Math.Sin(Angle);
+            Laser2A.transform.localScale = new Vector3(0.03f, 5, 0.03f);
+            Laser2A.transform.position = new Vector3(RackCenter + (ExtraLaserX / 2), LasersPos.y + (ExtraLaserY / 2), LasersPos.z);
+        }
+        else
+        {
+            Pointer2A.SetActive(true);
+            Pointer2D.SetActive(true);
+            Laser2A.transform.localScale = new Vector3(0.03f, LaserLenght, 0.03f);
+            Laser2A.transform.position = new Vector3(MiddlePos, LasersPos.y + (y / 2), LasersPos.z);
+        }
+        Laser2A.transform.eulerAngles = new Vector3(0, 0, StartAngle + (Angle * (180f / (float)Math.PI)));
+        Laser2D.transform.localScale = new Vector3(0.03f, LaserLenght, 0.03f);
+        Laser2D.transform.eulerAngles = new Vector3(0, 0, StartAngle - (Angle * (180f / (float)Math.PI)));
+        Laser2D.transform.position = new Vector3(MiddlePos, LasersPos.y - (y / 2), LasersPos.z);
     }
 }
