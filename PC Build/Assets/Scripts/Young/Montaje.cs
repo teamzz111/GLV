@@ -10,22 +10,22 @@ public class Montaje : MonoBehaviour {
     public GameObject MountedControls;
     public GameObject YoungBefore;
     public GameObject YoungAfter;
+    public GameObject PredictionPanel;
+    public GameObject ValuesPanel;
 
     public GameObject Plane;
     public GameObject Support1;
     public GameObject Support2;
 
-    private bool CompleteMounting = false;
+    public static bool MontajeCompleto = false;
 
     private void Start()
     {
         MountedControls.SetActive(false);
         YoungAfter.SetActive(false);
+        PredictionPanel.SetActive(false);
+        ValuesPanel.SetActive(false);
     }
-
-    void Update () {
-		
-	}
 
     public void Check()
     {
@@ -37,11 +37,14 @@ public class Montaje : MonoBehaviour {
             YoungBefore.SetActive(false);
             YoungAfter.SetActive(true);
             MountedControls.SetActive(true);
-            CompleteMounting = true;
+            PredictionPanel.SetActive(true);
+            ValuesPanel.SetActive(true);
+            MontajeCompleto = true;
+            MessageConsole.Message = "Montaje completado!, Ahora establezca las constantes";
         }
         else
         {
-            Debug.Log("Not ready");
+            MessageConsole.Message = "El montaje no es correcto!";
         }
     }
 }

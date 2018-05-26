@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MoveMountedControls : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class MoveMountedItems : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
 
     private bool RightClick = true;
     private bool LeftClik = true;
+    private double RackMinus;
+    private double RackPlus;
 
     public GameObject Rack;
 
@@ -23,13 +25,19 @@ public class MoveMountedControls : MonoBehaviour, IPointerDownHandler, IPointerU
         LeftClik = true;
     }
 
+    void Start()
+    {
+        RackMinus = Rack.transform.position.x - 1.7;
+        RackPlus = Rack.transform.position.x + 1.7;
+    }
+
     void Update()
     {
-        if(RightClick == false)
+        if(RightClick == false && Rack.transform.position.x + 0.07 <= RackPlus)
         {
             Rack.transform.position += new Vector3(0.07f, 0, 0);
         }
-        else if(LeftClik == false)
+        else if(LeftClik == false && Rack.transform.position.x - 0.07 >= RackMinus)
         {
             Rack.transform.position -= new Vector3(0.07f, 0, 0);
         }
