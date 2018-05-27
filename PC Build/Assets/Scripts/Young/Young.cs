@@ -16,11 +16,22 @@ public class Young : MonoBehaviour {
     public InputField LambdaText;
     public InputField mText;
 
+    public GameObject LaserPrincipal;
     public GameObject Laser1A; public GameObject Pointer1A;
     public GameObject Laser1D; public GameObject Pointer1D;
     public GameObject Laser2A; public GameObject Pointer2A;
     public GameObject Laser2D; public GameObject Pointer2D;
 
+    public Material Pointer;
+    public Material PointerTop;
+    public Texture PointerViolet;
+    public Texture PointerBlue;
+    public Texture PointerCyan;
+    public Texture PointerGreen;
+    public Texture PointerYellow;
+    public Texture PointerOrange;
+    public Texture PointerRed;
+    
     private float RackPlus;
     private float RackCenter;
 
@@ -43,10 +54,12 @@ public class Young : MonoBehaviour {
         RackPlus = Rack.transform.position.x + 2.31f;
         LasersPos = Laser1A.transform.position;
         StartAngle = Laser1A.transform.eulerAngles.z;
+
+        DisableLaser();
     }
 	
 	void Update () {
-        if (Montaje.MontajeCompleto)
+        if (!Montaje.MontajeCompleto)
         {
             L = (RackPlus - Rack.transform.position.x) * 0.2f;
             SetValueL.text = L.ToString("f3");
@@ -54,7 +67,7 @@ public class Young : MonoBehaviour {
             {
                 try
                 {
-                    Lambda = (float)Convert.ToDouble(LambdaText.text) / 1000000000f;
+                    Lambda = (float)Convert.ToDouble(LambdaText.text);
                     try
                     {
                         N = (float)Convert.ToDouble(NText.text);
@@ -64,7 +77,7 @@ public class Young : MonoBehaviour {
                             m = (float)Convert.ToDouble(mText.text);
                             
                             SetValued.text = d.ToString();
-                            y = (m * Lambda * L) / d;
+                            y = (m * (Lambda / 1000000000f) * L) / d;
                             SetValuey.text = y.ToString("f4");
                             MakeLaser();
                         }
@@ -77,6 +90,7 @@ public class Young : MonoBehaviour {
                             else
                             {
                                 mText.text = "";
+                                DisableLaser();
                             }
                             MessageConsole.Message = "Escriba un carácter válido!";
                         }
@@ -90,6 +104,7 @@ public class Young : MonoBehaviour {
                         else
                         {
                             NText.text = "";
+                            DisableLaser();
                         }
                         MessageConsole.Message = "Escriba un carácter válido!";
                     }
@@ -103,15 +118,45 @@ public class Young : MonoBehaviour {
                     else
                     {
                         LambdaText.text = "";
+                        DisableLaser();
                     }
                     MessageConsole.Message = "Escriba un carácter válido!";
                 }
             }
+            else
+            {
+                DisableLaser();
+            }
         }
 	}
 
+    private void DisableLaser()
+    {
+        LaserPrincipal.SetActive(false);
+        Laser1A.SetActive(false); Pointer1A.SetActive(false);
+        Laser1D.SetActive(false); Pointer1D.SetActive(false);
+        Laser2A.SetActive(false); Pointer2A.SetActive(false);
+        Laser2D.SetActive(false); Pointer2D.SetActive(false);
+        PointerTop.color = Color.red;
+        Pointer.mainTexture = PointerRed;
+    }
+
     private void MakeLaser()
     {
+        if (Lambda < 440){ Pointer.mainTexture = PointerViolet; PointerTop.color = new Color32(140,0,255,1); }
+        else if (Lambda >= 440 && Lambda < 485) { Pointer.mainTexture = PointerBlue; PointerTop.color = Color.blue; }
+        else if (Lambda >= 485 && Lambda < 500) { Pointer.mainTexture = PointerCyan; PointerTop.color = Color.cyan; }
+        else if (Lambda >= 500 && Lambda < 565) { Pointer.mainTexture = PointerGreen; PointerTop.color = Color.green; }
+        else if (Lambda >= 565 && Lambda < 590) { Pointer.mainTexture = PointerYellow; PointerTop.color = Color.yellow; }
+        else if (Lambda >= 590 && Lambda < 625) { Pointer.mainTexture = PointerOrange; PointerTop.color = new Color32(255, 127, 0,1); }
+        else if (Lambda >= 625) { Pointer.mainTexture = PointerRed; PointerTop.color = Color.red; }
+
+        LaserPrincipal.SetActive(true);
+        Laser1A.SetActive(true);
+        Laser1D.SetActive(true);
+        Laser2A.SetActive(true);
+        Laser2D.SetActive(true);
+
         RackCenter = Rack.transform.position.x - 0.07f;
 
         y = y / 0.2f;

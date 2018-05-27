@@ -19656,6 +19656,7 @@ MonoBehaviour:
   NText: {fileID: 2105678867}
   LambdaText: {fileID: 1951847468}
   mText: {fileID: 680019328}
+  LaserPrincipal: {fileID: 641102321}
   Laser1A: {fileID: 1208595785}
   Pointer1A: {fileID: 1698677782}
   Laser1D: {fileID: 568363300}
@@ -19664,6 +19665,15 @@ MonoBehaviour:
   Pointer2A: {fileID: 609179697}
   Laser2D: {fileID: 1312971606}
   Pointer2D: {fileID: 1368996597}
+  Pointer: {fileID: 2100000, guid: 15628cf49aa12a7488024203d0807c8a, type: 2}
+  PointerTop: {fileID: 2100000, guid: 8e4e39443e162e44bbdb9637fa7940a1, type: 2}
+  PointerViolet: {fileID: 2800000, guid: 368bd12fea5f63b47b732a93968669e5, type: 3}
+  PointerBlue: {fileID: 2800000, guid: f9c903804242ba8489cb7f8119be2c9b, type: 3}
+  PointerCyan: {fileID: 2800000, guid: 5191761b4aaed694791e2d3be7d1e775, type: 3}
+  PointerGreen: {fileID: 2800000, guid: 5a6874c0220347d4d949f04226defa9d, type: 3}
+  PointerYellow: {fileID: 2800000, guid: 2521f40ccf41d874e824b872b3d20b6d, type: 3}
+  PointerOrange: {fileID: 2800000, guid: 5f01d2d3ca8234b499281c4d6d2c5007, type: 3}
+  PointerRed: {fileID: 2800000, guid: cb53d15c425c9394cad01823f70fef63, type: 3}
 --- !u!1 &1718911682
 GameObject:
   m_ObjectHideFlags: 0
