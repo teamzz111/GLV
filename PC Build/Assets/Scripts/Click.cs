@@ -65,12 +65,12 @@ public class Click : MonoBehaviour {
             }
             else if (name.Equals("Lloyd Button"))
             {
-                QueLab = "lloid";
+                QueLab = "lloydnovr";
                 SceneManager.LoadScene(1);
             }
             else if (name.Equals("Young Button"))
             {
-                QueLab = "young";
+                QueLab = "youngnovr";
                 SceneManager.LoadScene(1);
             }
             else if(name.Length == 10 && name.Substring(0, 9).Equals("Escenario"))
@@ -79,6 +79,7 @@ public class Click : MonoBehaviour {
                 if (name.Equals("Escenario1")) { TCPConPC.OnPlayCommands = "Message|1"; }
                 else if (name.Equals("Escenario2")) { TCPConPC.OnPlayCommands = "Message|2"; }
                 else if (name.Equals("Escenario3")) { TCPConPC.OnPlayCommands = "Message|3";}
+                QueLab = "youngvr";
                 SceneManager.LoadScene(1);
             }
         }

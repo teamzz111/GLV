@@ -5,13 +5,18 @@ using UnityEngine;
 public class QueLab : MonoBehaviour {
 
     public GameObject YoungMaterials;
-    public GameObject YoungMaterialsAfter;
+
+    public static bool VR = false;
 
     void Start () {
-        if (Click.QueLab.Equals("young"))
+        if (Click.QueLab.Equals("youngnovr"))
         {
             YoungMaterials.SetActive(true);
-            YoungMaterialsAfter.SetActive(true);
+            VR = false;
+        }
+        else if(Click.QueLab.Equals("youngvr")){
+            YoungMaterials.SetActive(true);
+            VR = true;
         }
 	}
 }

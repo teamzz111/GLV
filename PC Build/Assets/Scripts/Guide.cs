@@ -14,7 +14,7 @@ public class Guide : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetKeyDown(KeyCode.G)) {
+        if (Input.GetKeyDown(KeyCode.G) && QueLab.VR == false) {
             if(Open == false && Convert.ToInt32(guide.transform.rotation.eulerAngles.x) == 90)
             {
                 Open = true;

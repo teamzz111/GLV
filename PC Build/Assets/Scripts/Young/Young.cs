@@ -59,7 +59,7 @@ public class Young : MonoBehaviour {
     }
 	
 	void Update () {
-        if (!Montaje.MontajeCompleto)
+        if (Montaje.MontajeCompleto)
         {
             L = (RackPlus - Rack.transform.position.x) * 0.2f;
             SetValueL.text = L.ToString("f3");

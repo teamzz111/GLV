@@ -37,7 +37,10 @@ public class Montaje : MonoBehaviour {
             YoungBefore.SetActive(false);
             YoungAfter.SetActive(true);
             MountedControls.SetActive(true);
-            PredictionPanel.SetActive(true);
+            if(QueLab.VR == false)
+            {
+                PredictionPanel.SetActive(true);
+            }
             ValuesPanel.SetActive(true);
             MontajeCompleto = true;
             MessageConsole.Message = "Montaje completado!, Ahora establezca las constantes";
