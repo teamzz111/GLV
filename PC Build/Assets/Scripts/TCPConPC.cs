@@ -23,26 +23,66 @@ public class TCPConPC : MonoBehaviour {
     TcpClient client;
 
     private static bool Created = false;
-    public static string OnPlayCommands = "";
+    public static List<string> OnPlayCommands;
     private bool Connecting = false;
 
     void Start () {
         Connect.onClick.AddListener(ConnectServer);
+        OnPlayCommands = new List<string>();
     }
 
     void Update()
     {
-        if (!string.IsNullOrEmpty(OnPlayCommands))
+        if (OnPlayCommands.Count > 0)
         {
-            if (OnPlayCommands.Split('|')[0].Equals("Desconnect"))
+            if (OnPlayCommands[0].Split('|')[0].Equals("Desconnect"))
             {
                 client.Close();
-                OnPlayCommands = "";
+                OnPlayCommands.RemoveAt(0);
             }
-            else if (OnPlayCommands.Split('|')[0].Equals("Message"))
+            else if (OnPlayCommands[0].Split('|')[0].Equals("Map"))
             {
-                sendMessage("Map|" + OnPlayCommands.Split('|')[1]);
-                OnPlayCommands = "";
+                sendMessage("Map|" + OnPlayCommands[0].Split('|')[1]);
+                OnPlayCommands.RemoveAt(0);
+            }
+            else if (OnPlayCommands[0].Split('|')[0].Equals("QueLab"))
+            {
+                sendMessage("QueLab|" + OnPlayCommands[0].Split('|')[1]);
+                OnPlayCommands.RemoveAt(0);
+            }
+            else if (OnPlayCommands[0].Split('|')[0].Equals("Position"))
+            {
+                sendMessage("P|" + OnPlayCommands[0].Split('|')[1]);
+                OnPlayCommands.RemoveAt(0);
+            }
+            else if (OnPlayCommands[0].Split('|')[0].Equals("Rotation"))
+            {
+                sendMessage("R|" + OnPlayCommands[0].Split('|')[1]);
+                OnPlayCommands.RemoveAt(0);
+            }
+            else if (OnPlayCommands[0].Split('|')[0].Equals("Scale"))
+            {
+                sendMessage("S|" + OnPlayCommands[0].Split('|')[1]);
+                OnPlayCommands.RemoveAt(0);
+            }
+            else if (OnPlayCommands[0].Split('|')[0].Equals("Collition"))
+            {
+                sendMessage("Col|" + OnPlayCommands[0].Split('|')[1]);
+                OnPlayCommands.RemoveAt(0);
+            }
+            else if (OnPlayCommands[0].Split('|')[0].Equals("Montaje"))
+            {
+                sendMessage("Montaje|" + OnPlayCommands[0].Split('|')[1]);
+                OnPlayCommands.RemoveAt(0);
+            }
+            else if (OnPlayCommands[0].Split('|')[0].Equals("Prediction"))
+            {
+                sendMessage("Pre|" + OnPlayCommands[0].Split('|')[1]);
+                OnPlayCommands.RemoveAt(0);
+            }
+            else
+            {
+                OnPlayCommands.RemoveAt(0);
             }
         }
     }
@@ -75,6 +115,7 @@ public class TCPConPC : MonoBehaviour {
 
     void sendMessage(string Message)
     {
+        Message = Message + "&";
         try
         {
             Byte[] data = Encoding.ASCII.GetBytes(Message);

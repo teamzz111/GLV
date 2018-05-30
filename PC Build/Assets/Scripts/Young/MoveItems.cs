@@ -22,7 +22,7 @@ public class MoveItems : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && MoveControls.AnyControl == true)
+        if (Input.GetMouseButtonDown(0) && MoveControls.AnyControl == true && ResultTable.TableOpen == false)
         {
             Ray mouseray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit rayhit;
@@ -77,7 +77,7 @@ public class MoveItems : MonoBehaviour {
                 }
             }
         }
-        if (WhatObject != null)
+        if (WhatObject != null && ResultTable.TableOpen == false)
         {
             if (Input.GetKey(KeyCode.RightArrow) || MoveControls.RightClick == false)
             {

@@ -41,6 +41,10 @@ public class Montaje : MonoBehaviour {
             {
                 PredictionPanel.SetActive(true);
             }
+            else
+            {
+                TCPConPC.OnPlayCommands.Add("Montaje|true");
+            }
             ValuesPanel.SetActive(true);
             MontajeCompleto = true;
             MessageConsole.Message = "Montaje completado!, Ahora establezca las constantes";

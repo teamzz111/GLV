@@ -50,6 +50,10 @@ public class Young : MonoBehaviour {
     private float ExtraLaserX;
     private float ExtraLaserY;
 
+    public static string SendL;
+    public static string Sendy;
+    public static string Sendd;
+
     void Start () {
         RackPlus = Rack.transform.position.x + 2.31f;
         LasersPos = Laser1A.transform.position;
@@ -79,6 +83,9 @@ public class Young : MonoBehaviour {
                             SetValued.text = d.ToString();
                             y = (m * (Lambda / 1000000000f) * L) / d;
                             SetValuey.text = y.ToString("f4");
+                            SendL = SetValueL.text;
+                            Sendy = SetValuey.text;
+                            Sendd = SetValued.text;
                             MakeLaser();
                         }
                         catch

@@ -61,7 +61,7 @@ public class Click : MonoBehaviour {
                 CloseSound.Play();
                 Stop = MapsVR.transform.position.x * 3;
                 MapsClose = true;
-                TCPConPC.OnPlayCommands = "Desconnect|";
+                TCPConPC.OnPlayCommands.Add("Desconnect|");
             }
             else if (name.Equals("Lloyd Button"))
             {
@@ -75,10 +75,10 @@ public class Click : MonoBehaviour {
             }
             else if(name.Length == 10 && name.Substring(0, 9).Equals("Escenario"))
             {
-                TCPConPC.OnPlayCommands = "Message|" + DropdownText;
-                if (name.Equals("Escenario1")) { TCPConPC.OnPlayCommands = "Message|1"; }
-                else if (name.Equals("Escenario2")) { TCPConPC.OnPlayCommands = "Message|2"; }
-                else if (name.Equals("Escenario3")) { TCPConPC.OnPlayCommands = "Message|3";}
+                TCPConPC.OnPlayCommands.Add("QueLab|" + DropdownText.text);
+                if (name.Equals("Escenario1")) { TCPConPC.OnPlayCommands.Add("Map|1"); }
+                else if (name.Equals("Escenario2")) { TCPConPC.OnPlayCommands.Add("Map|2"); }
+                else if (name.Equals("Escenario3")) { TCPConPC.OnPlayCommands.Add("Map|3"); }
                 QueLab = "youngvr";
                 SceneManager.LoadScene(1);
             }

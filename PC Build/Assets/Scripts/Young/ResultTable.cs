@@ -7,6 +7,8 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Net.Mail;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 #if UNITY_EDITOR || UNITY_STANDALONE
 using System.Windows.Forms;
 #endif
@@ -22,7 +24,7 @@ public class ResultTable : MonoBehaviour {
     public List<InputField> Mails;
 
 
-    private bool TableOpen = false;
+    public static bool TableOpen = false;
     private bool PDFGenerated = false;
 
     void Start () {
@@ -63,20 +65,13 @@ public class ResultTable : MonoBehaviour {
         if (dlg.ShowDialog() == DialogResult.OK)
         {
             path = dlg.FileName;
-            try
+            PDFGenerated = false;
+            GeneraPDF(path);
+            if (PDFGenerated == true)
             {
-                GeneraPDF(path);
                 MessageConsole.Message = "El archivo se ha guardado correctamente";
             }
-            catch
-            {
-                AnimTable();
-                MessageConsole.Message = "Ocurrió un error al guardar el archivo, intente de nuevo";
-            }
-            finally
-            {
-                path = "";
-            }
+            path = "";
             AnimTable();
         }
         else
@@ -101,45 +96,37 @@ public class ResultTable : MonoBehaviour {
     public void EnviaPDF()
     {
         CloseMailPanel();
-        PDFGenerated = false;
         string FilePDF = Directory.GetCurrentDirectory() + @"\file.pdf";
-        #if UNITY_EDITOR || UNITY_STANDALONE
-        try
+        PDFGenerated = false;
+        GeneraPDF(FilePDF);
+        if (PDFGenerated == true)
         {
-            GeneraPDF(FilePDF);
-        }
-        catch
-        {
-            AnimTable();
-            MessageConsole.Message = "Ocurrió un error al guardar el archivo, intente de nuevo";
-        }
-        #endif
-        if(PDFGenerated == true)
-        {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-            client.Credentials = new NetworkCredential("guiaslaboratoriosvirtuales@gmail.com", "GLV0315GLV"); ;
-            client.EnableSsl = true;
-            client.Timeout = 10000;
-
-            MailMessage Mensaje = new MailMessage();
-            Mensaje.Subject = "Tabla de resultados";
-            Mensaje.From = new MailAddress("guiaslaboratoriosvirtuales@gmail.com");
-            Mensaje.Body = "GLV te ha generado una tabla de resultados:";
-            foreach (InputField I in Mails)
-            {
-                if (!string.IsNullOrEmpty(I.text))
-                {
-                    Mensaje.To.Add(I.text);
-                }
-            }
             try
             {
-                Mensaje.Attachments.Add(new Attachment(Path.GetFileName(FilePDF)));
-                client.Send(Mensaje);
+                MailMessage mail = new MailMessage();
+
+                mail.From = new MailAddress("guiaslaboratoriosvirtuales@gmail.com");
+                foreach (InputField I in Mails)
+                {
+                    if (!string.IsNullOrEmpty(I.text))
+                    {
+                        mail.To.Add(I.text);
+                    }
+                }
+                mail.Subject = "Test Mail";
+                mail.Body = "This is for testing SMTP mail from GMAIL";
+
+                SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
+                smtpServer.Port = 587;
+                smtpServer.Credentials = new System.Net.NetworkCredential("guiaslaboratoriosvirtuales@gmail.com", "GLV0315GLV") as ICredentialsByHost;
+                smtpServer.EnableSsl = true;
+                ServicePointManager.ServerCertificateValidationCallback =
+                    delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+                    { return true; };
+                mail.Attachments.Add(new Attachment(Path.GetFileName(FilePDF)));
+                smtpServer.Send(mail);
                 AnimTable();
                 MessageConsole.Message = "El mail se ha enviado satisfactoriamente";
-                Mensaje.Dispose();
-                File.Delete(FilePDF);
             }
             catch (Exception ex)
             {
@@ -154,145 +141,170 @@ public class ResultTable : MonoBehaviour {
     private void GeneraPDF(string path)
     {
         Document doc = new Document(PageSize.LETTER);
-        PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
-        doc.AddTitle("Tabla de resultados de laboratorio");
-        doc.AddCreator("GLV");
-        doc.Open();
-
-        iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 20f, iTextSharp.text.Font.BOLD);
-        Paragraph Parrafo = new Paragraph("Resultados del Experimento de Young", _standardFont);
-        Parrafo.Alignment = Element.ALIGN_CENTER;
-        doc.Add(Parrafo);
-        doc.Add(Chunk.NEWLINE);
-
-        _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 12f, iTextSharp.text.Font.NORMAL);
-
+        FileStream FS = new FileStream(path, FileMode.Create);
+        PdfWriter writer = PdfWriter.GetInstance(doc, FS);
         PdfPTable Table = new PdfPTable(2);
-        Table.WidthPercentage = 80;
-
-        PdfPCell cell = new PdfPCell(new Phrase("Longitud de onda: " + "\nN: "));
-        cell.Colspan = 2;
-        cell.HorizontalAlignment = Element.ALIGN_LEFT;
-        cell.Padding = 10;
-        Table.AddCell(cell);
-
-        _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 15f, iTextSharp.text.Font.BOLD);
-        cell = new PdfPCell(new Phrase("L (m)", _standardFont));
-        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-        cell.VerticalAlignment = Element.ALIGN_CENTER;
-        cell.VerticalAlignment = Element.ALIGN_CENTER;
-        cell.Padding = 5;
-        Table.AddCell(cell);
-
-        cell = new PdfPCell(new Phrase("y (m)", _standardFont));
-        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-        cell.VerticalAlignment = Element.ALIGN_CENTER;
-        cell.Padding = 5;
-        Table.AddCell(cell);
-
-        _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 10f, iTextSharp.text.Font.NORMAL);
-
-        string Text = "";
-
-        foreach(InputField I in Table1)
+        try
         {
-            if (string.IsNullOrEmpty(I.text))
-            {
-                Text = " ";
-            }
-            else
-            {
-                Text = I.text;
-            }
-            cell = new PdfPCell(new Phrase(Text, _standardFont));
+            doc.AddTitle("Tabla de resultados de laboratorio");
+            doc.AddCreator("GLV");
+            doc.Open();
+
+            iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 20f, iTextSharp.text.Font.BOLD);
+            Paragraph Parrafo = new Paragraph("Resultados del Experimento de Young", _standardFont);
+            Parrafo.Alignment = Element.ALIGN_CENTER;
+            doc.Add(Parrafo);
+            doc.Add(Chunk.NEWLINE);
+
+            _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 12f, iTextSharp.text.Font.NORMAL);
+            
+            Table.WidthPercentage = 80;
+
+            PdfPCell cell = new PdfPCell(new Phrase("Longitud de onda: " + Table1[0].text + "\nN: " + Table1[1].text));
+            cell.Colspan = 2;
             cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.Padding = 4;
+            cell.Padding = 10;
             Table.AddCell(cell);
+
+            _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 15f, iTextSharp.text.Font.BOLD);
+            cell = new PdfPCell(new Phrase("L (m)", _standardFont));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+            cell.Padding = 5;
+            Table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("y (m)", _standardFont));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+            cell.Padding = 5;
+            Table.AddCell(cell);
+
+            _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 10f, iTextSharp.text.Font.NORMAL);
+
+            string Text = "";
+            int Index = 0;
+            foreach (InputField I in Table1)
+            {
+                if(Index >= 2)
+                {
+                    if (string.IsNullOrEmpty(I.text))
+                    {
+                        Text = " ";
+                    }
+                    else
+                    {
+                        Text = I.text;
+                    }
+                    cell = new PdfPCell(new Phrase(Text, _standardFont));
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.Padding = 4;
+                    Table.AddCell(cell);
+                }
+                Index++;
+            }
+
+            cell = new PdfPCell(new Phrase("Longitud de onda: " + Table2[0].text + "\nN: " + Table2[1].text));
+            cell.Colspan = 2;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            cell.Padding = 10;
+            Table.AddCell(cell);
+
+            _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 15f, iTextSharp.text.Font.BOLD);
+            cell = new PdfPCell(new Phrase("L (m)", _standardFont));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+            cell.Padding = 5;
+            Table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("y (m)", _standardFont));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+            cell.Padding = 5;
+            Table.AddCell(cell);
+
+            _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 10f, iTextSharp.text.Font.NORMAL);
+
+            Text = "";
+            Index = 0;
+            foreach (InputField I in Table2)
+            {
+                if (Index >= 2)
+                {
+                    if (string.IsNullOrEmpty(I.text))
+                    {
+                        Text = " ";
+                    }
+                    else
+                    {
+                        Text = I.text;
+                    }
+                    cell = new PdfPCell(new Phrase(Text, _standardFont));
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.Padding = 4;
+                    Table.AddCell(cell);
+                }
+                Index++;
+            }
+
+            cell = new PdfPCell(new Phrase("Longitud de onda: " + Table3[0].text + "\nN: " + Table3[1].text));
+            cell.Colspan = 2;
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            cell.Padding = 10;
+            Table.AddCell(cell);
+
+            _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 15f, iTextSharp.text.Font.BOLD);
+            cell = new PdfPCell(new Phrase("L (m)", _standardFont));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+            cell.Padding = 5;
+            Table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("y (m)", _standardFont));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+            cell.Padding = 5;
+            Table.AddCell(cell);
+
+            _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 10f, iTextSharp.text.Font.NORMAL);
+
+            Text = "";
+            Index = 0;
+            foreach (InputField I in Table3)
+            {
+                if (Index >= 2)
+                {
+                    if (string.IsNullOrEmpty(I.text))
+                    {
+                        Text = " ";
+                    }
+                    else
+                    {
+                        Text = I.text;
+                    }
+                    cell = new PdfPCell(new Phrase(Text, _standardFont));
+                    cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                    cell.Padding = 4;
+                    Table.AddCell(cell);
+                }
+                Index++;
+            }
+            doc.Add(Table);
+            PDFGenerated = true;
         }
-
-        cell = new PdfPCell(new Phrase("Longitud de onda: " + "\nN: "));
-        cell.Colspan = 2;
-        cell.HorizontalAlignment = Element.ALIGN_LEFT;
-        cell.Padding = 10;
-        Table.AddCell(cell);
-
-        _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 15f, iTextSharp.text.Font.BOLD);
-        cell = new PdfPCell(new Phrase("L (m)", _standardFont));
-        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-        cell.VerticalAlignment = Element.ALIGN_CENTER;
-        cell.VerticalAlignment = Element.ALIGN_CENTER;
-        cell.Padding = 5;
-        Table.AddCell(cell);
-
-        cell = new PdfPCell(new Phrase("y (m)", _standardFont));
-        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-        cell.VerticalAlignment = Element.ALIGN_CENTER;
-        cell.Padding = 5;
-        Table.AddCell(cell);
-
-        _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 10f, iTextSharp.text.Font.NORMAL);
-
-        Text = "";
-
-        foreach (InputField I in Table2)
+        catch
         {
-            if (string.IsNullOrEmpty(I.text))
-            {
-                Text = " ";
-            }
-            else
-            {
-                Text = I.text;
-            }
-            cell = new PdfPCell(new Phrase(Text, _standardFont));
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.Padding = 4;
-            Table.AddCell(cell);
+            AnimTable();
+            MessageConsole.Message = "Ocurrió un error al guardar el archivo, intente de nuevo";
         }
-
-        cell = new PdfPCell(new Phrase("Longitud de onda: " + "\nN: "));
-        cell.Colspan = 2;
-        cell.HorizontalAlignment = Element.ALIGN_LEFT;
-        cell.Padding = 10;
-        Table.AddCell(cell);
-
-        _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 15f, iTextSharp.text.Font.BOLD);
-        cell = new PdfPCell(new Phrase("L (m)", _standardFont));
-        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-        cell.VerticalAlignment = Element.ALIGN_CENTER;
-        cell.VerticalAlignment = Element.ALIGN_CENTER;
-        cell.Padding = 5;
-        Table.AddCell(cell);
-
-        cell = new PdfPCell(new Phrase("y (m)", _standardFont));
-        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-        cell.VerticalAlignment = Element.ALIGN_CENTER;
-        cell.Padding = 5;
-        Table.AddCell(cell);
-
-        _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 10f, iTextSharp.text.Font.NORMAL);
-
-        Text = "";
-
-        foreach (InputField I in Table3)
+        finally
         {
-            if (string.IsNullOrEmpty(I.text))
-            {
-                Text = " ";
-            }
-            else
-            {
-                Text = I.text;
-            }
-            cell = new PdfPCell(new Phrase(Text, _standardFont));
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.Padding = 4;
-            Table.AddCell(cell);
+            doc.Close();
+            writer.Close();
+            FS.Close();
+            FS.Dispose();
         }
-
-        doc.Add(Table);
-        doc.Close();
-        writer.Close();
-        PDFGenerated = true;
     }
 }

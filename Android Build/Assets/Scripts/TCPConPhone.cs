@@ -105,7 +105,6 @@ public class TCPConPhone : MonoBehaviour
             }
             else
             {
-                ErrorSound.Play();
                 Enqueue(() => {
                     MessageBox.fontSize = 5;
                     MessageBox.text = "Error: ¿Estás conectad@ a internet?";
@@ -114,7 +113,6 @@ public class TCPConPhone : MonoBehaviour
         }
         catch (Exception ex)
         {
-            ErrorSound.Play();
             Enqueue(() => {
                 MessageBox.fontSize = 5;
                 MessageBox.text = "Error: ¿Estás conectad@ a internet?";
@@ -124,10 +122,47 @@ public class TCPConPhone : MonoBehaviour
 
     public void GetCommands(string command)
     {
-        if (command.Split('|')[0].Equals("Map"))
+        try
         {
-            SceneName = command.Split('|')[1];
-            Enqueue(() => SceneManager.LoadScene(Convert.ToInt32(command.Split('|')[1])));
+            foreach(string s in command.Split('&'))
+            {
+                if (!string.IsNullOrEmpty(s))
+                {
+                    if (s.Split('|')[0].Equals("Map"))
+                    {
+                        SceneName = s.Split('|')[1];
+                        Enqueue(() => SceneManager.LoadScene(Convert.ToInt32(s.Split('|')[1])));
+                    }
+                    else if (s.Split('|')[0].Equals("P"))
+                    {
+                        GetItemPosition.Position.Add(s.Split('|')[1]);
+                    }
+                    else if (s.Split('|')[0].Equals("R"))
+                    {
+                        GetItemPosition.Rotation.Add(s.Split('|')[1]);
+                    }
+                    else if (s.Split('|')[0].Equals("S"))
+                    {
+                        GetItemPosition.Scale.Add(s.Split('|')[1]);
+                    }
+                    else if (s.Split('|')[0].Equals("Col"))
+                    {
+                        SupportCollition.NewCollition = s.Split('|')[1];
+                    }
+                    else if (s.Split('|')[0].Equals("Pre"))
+                    {
+                        Young.GetValues = s.Split('|')[1];
+                    }
+                    else if (s.Split('|')[0].Equals("Montaje"))
+                    {
+                        Montaje.MontajeCompleto = true;
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.Log(ex.ToString());
         }
     }
     

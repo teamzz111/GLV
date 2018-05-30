@@ -20,13 +20,21 @@ public class SupportCollition : MonoBehaviour {
     {
         if (col.gameObject.name == "Laser" && this.gameObject.name.Equals("Support2"))
         {
-            Destroy(col.gameObject);
+            col.gameObject.SetActive(false);
+            if(QueLab.VR == true)
+            {
+                TCPConPC.OnPlayCommands.Add("Collition|Support2");
+            }
             Laser.SetActive(true);
             LaserReady = true;
         }
         else if(col.gameObject.name == "rack" && this.gameObject.name.Equals("Support1"))
         {
-            Destroy(col.gameObject);
+            col.gameObject.SetActive(false);
+            if(QueLab.VR == true)
+            {
+                TCPConPC.OnPlayCommands.Add("Collition|Support1");
+            }
             rack.SetActive(true);
             RackReady = true;
         }

@@ -254,6 +254,10 @@
     <Compile Include="Assets\Scenes\Map 3\Map-Nokobot\Scripts\WaterTile.cs" />
     <Compile Include="Assets\Scenes\Map 3\Map-Nokobot\Water\Scripts\WaterBasic.cs" />
     <Compile Include="Assets\Scripts\TCPConPhone.cs" />
+    <Compile Include="Assets\Scripts\Young\GetItemPosition.cs" />
+    <Compile Include="Assets\Scripts\Young\Montaje.cs" />
+    <Compile Include="Assets\Scripts\Young\SupportCollition.cs" />
+    <Compile Include="Assets\Scripts\Young\Young.cs" />
     <Compile Include="Assets\Shared Assets\GoogleVR\Legacy\Scripts\Audio\GvrAudio.cs" />
     <Compile Include="Assets\Shared Assets\GoogleVR\Legacy\Scripts\Audio\GvrAudioListener.cs" />
     <Compile Include="Assets\Shared Assets\GoogleVR\Legacy\Scripts\Audio\GvrAudioRoom.cs" />

@@ -17,7 +17,7 @@ public class Menu : MonoBehaviour {
     }
 	
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape) && (Camera.transform.rotation == Rot || Camera.transform.rotation.y == -1))
+        if (Input.GetKeyDown(KeyCode.Escape) && (Camera.transform.rotation == Rot || Camera.transform.rotation.y == -1) && ResultTable.TableOpen == false)
         {
             if(Camera.transform.rotation.y == 0)
             {

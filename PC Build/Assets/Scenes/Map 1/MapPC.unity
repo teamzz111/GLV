@@ -26843,6 +26843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1531354548}
   - component: {fileID: 1531354549}
+  - component: {fileID: 1531354550}
   m_Layer: 0
   m_Name: LabMaterials
   m_TagString: Untagged
@@ -26877,6 +26878,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   YoungMaterials: {fileID: 1867717412}
+--- !u!114 &1531354550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1531354547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ee9f8bde215a1245ae1f4dd06c33186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Laser: {fileID: 425439880}
+  Rack: {fileID: 865974945}
+  Support1: {fileID: 854194518}
+  Support2: {fileID: 290928447}
+  Plane: {fileID: 1133345798}
+  MountedSupport: {fileID: 1842724818}
+  Laser1A: {fileID: 1208595785}
+  Laser1APointer: {fileID: 1698677782}
+  Laser1D: {fileID: 568363300}
+  Laser1DPointer: {fileID: 63385943}
+  Laser2A: {fileID: 105293573}
+  Laser2APointer: {fileID: 609179697}
+  Laser2D: {fileID: 1312971606}
+  Laser2DPointer: {fileID: 1368996597}
 --- !u!1001 &1532416684
 Prefab:
   m_ObjectHideFlags: 0
