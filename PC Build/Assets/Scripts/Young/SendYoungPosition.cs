@@ -64,9 +64,9 @@ public class SendYoungPosition : MonoBehaviour {
 
     private void SendValuesMounted()
     {
-        TCPConPC.OnPlayCommands.Add("Position|0" + MountedSupport.transform.position.ToString("f3") + ";1" + Laser1A.transform.position.ToString("f3") + ";2" + Laser1D.transform.position.ToString("f3") + ";3" + Laser2A.transform.position.ToString("f3") + ";4" + Laser2D.transform.position.ToString("f3"));
+        TCPConPC.OnPlayCommands.Add("Position|0" + MountedSupport.transform.position.ToString("f1") + ";1" + Laser1A.transform.position.ToString("f1") + ";2" + Laser1D.transform.position.ToString("f1") + ";3" + Laser2A.transform.position.ToString("f1") + ";4" + Laser2D.transform.position.ToString("f1"));
         TCPConPC.OnPlayCommands.Add("Rotation|0" + MountedSupport.transform.eulerAngles.ToString() + ";1" + Laser1A.transform.eulerAngles.ToString() + ";2" + Laser1D.transform.eulerAngles.ToString() + ";3" + Laser2A.transform.eulerAngles.ToString() + ";4" + Laser2D.transform.eulerAngles.ToString());
-        TCPConPC.OnPlayCommands.Add("Scale|0" + MountedSupport.transform.localScale.ToString("f3") + ";1" + Laser1A.transform.localScale.ToString("f3") + ";2" + Laser1D.transform.localScale.ToString("f3") + ";3" + Laser2A.transform.localScale.ToString("f3") + ";4" + Laser2D.transform.localScale.ToString("f3"));
+        TCPConPC.OnPlayCommands.Add("Scale|0" + MountedSupport.transform.localScale.ToString("f1") + ";1" + Laser1A.transform.localScale.ToString("f1") + ";2" + Laser1D.transform.localScale.ToString("f1") + ";3" + Laser2A.transform.localScale.ToString("f1") + ";4" + Laser2D.transform.localScale.ToString("f1"));
     }
 
     private void SendPrediction()

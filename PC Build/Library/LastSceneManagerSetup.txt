@@ -1,4 +1,4 @@
 sceneSetups:
-- path: "C:/Users/\xB4nicoloso100/Documents/Git/GLV/Android Build/Assets/Scenes/Menu/Menu.unity"
+- path: Assets/Scenes/Menu/Menu.unity
   isLoaded: 1
   isActive: 1
