@@ -12,6 +12,8 @@ public class Young : MonoBehaviour {
     public TextMeshPro d;
     public TextMeshPro y;
 
+    public TextMeshPro ChangeText;
+
     public static string GetValues = "";
 
     void Start () {
@@ -22,9 +24,17 @@ public class Young : MonoBehaviour {
 		if(Montaje.MontajeCompleto == true && !string.IsNullOrEmpty(GetValues))
         {
             Panel.SetActive(true);
-            L.text = GetValues.Split(';')[0];
-            d.text = GetValues.Split(';')[1];
-            y.text = GetValues.Split(';')[2];
+            if (GetValues.Split(';')[0].Equals("0"))
+            {
+                ChangeText.text = "y(m)";
+            }
+            else if (GetValues.Split(';')[0].Equals("1"))
+            {
+                ChangeText.text = "Lambda\n(nm)";
+            }
+            L.text = GetValues.Split(';')[1];
+            d.text = GetValues.Split(';')[2];
+            y.text = GetValues.Split(';')[3];
         }
 	}
 }

@@ -1212,6 +1212,7 @@ MonoBehaviour:
   L: {fileID: 796732131}
   d: {fileID: 2068869446}
   y: {fileID: 1148071331}
+  ChangeText: {fileID: 599941945}
 --- !u!1001 &311196276
 Prefab:
   m_ObjectHideFlags: 0
@@ -2034,7 +2035,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6b69e19331d63f34d978d6202857dc2b, type: 2}
+  - {fileID: 2100000, guid: a4f3f9345b3663a4faee9a4ef511b02c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -53,7 +53,7 @@ public class SendYoungPosition : MonoBehaviour {
                 SendValuesMounted();
                 SendPrediction();
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.6f);
         }
     }
 
@@ -72,7 +72,7 @@ public class SendYoungPosition : MonoBehaviour {
     private void SendPrediction()
     {
         if(!string.IsNullOrEmpty(Young.SendL) && !string.IsNullOrEmpty(Young.Sendd) && !string.IsNullOrEmpty(Young.Sendy)){
-            TCPConPC.OnPlayCommands.Add("Prediction|" + Young.SendL + ";" + Young.Sendd + ";" + Young.Sendy);
+            TCPConPC.OnPlayCommands.Add("Prediction|" + Young.SendChange + ";" + Young.SendL + ";" + Young.Sendd + ";" + Young.Sendy);
         }
     }
 }

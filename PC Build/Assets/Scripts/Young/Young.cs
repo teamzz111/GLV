@@ -11,11 +11,13 @@ public class Young : MonoBehaviour {
     public TextMeshProUGUI SetValueL;
     public TextMeshProUGUI SetValued;
     public TextMeshProUGUI SetValuey;
+    public TextMeshProUGUI ChangeResultConstant;
+    public TextMeshProUGUI ChangeResultPrediction;
 
     public InputField NText;
     public InputField LambdaText;
     public InputField mText;
-
+    
     public GameObject LaserPrincipal;
     public GameObject Laser1A; public GameObject Pointer1A;
     public GameObject Laser1D; public GameObject Pointer1D;
@@ -53,6 +55,11 @@ public class Young : MonoBehaviour {
     public static string SendL;
     public static string Sendy;
     public static string Sendd;
+    public static string SendChange = "0";
+
+    private bool isYChecked = true;
+    private bool isLambdaChecked = false;
+    public Text ChangeResultBut;
 
     void Start () {
         RackPlus = Rack.transform.position.x + 2.31f;
@@ -71,7 +78,18 @@ public class Young : MonoBehaviour {
             {
                 try
                 {
-                    Lambda = (float)Convert.ToDouble(LambdaText.text);
+                    if (isYChecked)
+                    {
+                        Lambda = (float)Convert.ToDouble(LambdaText.text);
+                    }
+                    else if (isLambdaChecked)
+                    {
+                        y = (float)Convert.ToDouble(LambdaText.text);
+                    }
+                    else
+                    {
+                        MessageConsole.Message = "Seleccione el cálculo que desea realizar";
+                    }
                     try
                     {
                         N = (float)Convert.ToDouble(NText.text);
@@ -81,8 +99,22 @@ public class Young : MonoBehaviour {
                             m = (float)Convert.ToDouble(mText.text);
                             
                             SetValued.text = d.ToString();
-                            y = (m * (Lambda / 1000000000f) * L) / d;
-                            SetValuey.text = y.ToString("f4");
+
+                            if (isYChecked)
+                            {
+                                y = (m * (Lambda / 1000000000f) * L) / d;
+                                SetValuey.text = y.ToString("f4");
+                            }
+                            else if (isLambdaChecked)
+                            {
+                                Lambda = (d * y) / (m * L);
+                                Lambda = Lambda / 0.000000001f;
+                                SetValuey.text = Lambda.ToString("f2");
+                            }
+                            else
+                            {
+                                MessageConsole.Message = "Seleccione el cálculo que desea realizar";
+                            }
                             SendL = SetValueL.text;
                             Sendy = SetValuey.text;
                             Sendd = SetValued.text;
@@ -137,6 +169,33 @@ public class Young : MonoBehaviour {
         }
 	}
 
+    public void ChangeButAction()
+    {
+        if (ChangeResultBut.text.Equals("Lambda"))
+        {
+            SendChange = "1";
+            SetValuey.text = "0";
+            LambdaText.text = "";
+            ChangeResultBut.text = "y";
+            isYChecked = false;
+            isLambdaChecked = true;
+            ChangeResultConstant.text = "y(m)";
+            ChangeResultPrediction.text = "Lambda(nm)";
+        }
+        else if (ChangeResultBut.text.Equals("y"))
+        {
+            SendChange = "0";
+            SetValuey.text = "0";
+            LambdaText.text = "";
+            ChangeResultBut.text = "Lambda";
+            isYChecked = true;
+            isLambdaChecked = false;
+            ChangeResultConstant.text = "Lambda(nm)";
+            ChangeResultPrediction.text = "y(m)";
+        }
+        
+    }
+    
     private void DisableLaser()
     {
         LaserPrincipal.SetActive(false);

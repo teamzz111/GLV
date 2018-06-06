@@ -12,6 +12,7 @@ public class Montaje : MonoBehaviour {
     public GameObject YoungAfter;
     public GameObject PredictionPanel;
     public GameObject ValuesPanel;
+    public GameObject ChangePanel;
 
     public GameObject Plane;
     public GameObject Support1;
@@ -24,6 +25,7 @@ public class Montaje : MonoBehaviour {
         MountedControls.SetActive(false);
         YoungAfter.SetActive(false);
         PredictionPanel.SetActive(false);
+        ChangePanel.SetActive(false);
         ValuesPanel.SetActive(false);
     }
 
@@ -46,6 +48,7 @@ public class Montaje : MonoBehaviour {
                 TCPConPC.OnPlayCommands.Add("Montaje|true");
             }
             ValuesPanel.SetActive(true);
+            ChangePanel.SetActive(true);
             MontajeCompleto = true;
             MessageConsole.Message = "Montaje completado!, Ahora establezca las constantes";
         }
