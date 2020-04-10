@@ -1,0 +1,153 @@
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Library/
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+obj/
+*.svd
+*.userprefs
+/*.csproj
+*.pidb
+*.suo
+/*.sln
+*.user
+*.unityproj
+*.booproj
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+PC Build/Library/APIUpdater/project-dependencies.graph
+PC Build/Library/ArtifactDB
+PC Build/Library/Artifacts/07/07a5c6e99311e4863c73fe5929d3524a
+PC Build/Library/SourceAssetDB
+PC Build/Library/shadercompiler-UnityShaderCompiler.exe5.log
+PC Build/Library/shadercompiler-UnityShaderCompiler.exe4.log
+PC Build/Library/shadercompiler-UnityShaderCompiler.exe3.log
+PC Build/Library/shadercompiler-UnityShaderCompiler.exe2.log
+PC Build/Library/shadercompiler-UnityShaderCompiler.exe1.log
+PC Build/Library/shadercompiler-UnityShaderCompiler.exe0.log
+PC Build/Library/ScriptMapper
+PC Build/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.pdb
+PC Build/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll
+PC Build/Library/ScriptAssemblies/UnityEngine.UI.pdb
+PC Build/Library/ScriptAssemblies/UnityEngine.UI.dll
+PC Build/Library/ScriptAssemblies/UnityEngine.TestRunner.pdb
+PC Build/Library/ScriptAssemblies/UnityEngine.TestRunner.dll
+PC Build/Library/ScriptAssemblies/UnityEngine.SpatialTracking.pdb
+PC Build/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll
+PC Build/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.pdb
+PC Build/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll
+PC Build/Library/ScriptAssemblies/UnityEditor.UI.pdb
+PC Build/Library/ScriptAssemblies/UnityEditor.UI.dll
+PC Build/Library/ScriptAssemblies/UnityEditor.TestRunner.pdb
+PC Build/Library/ScriptAssemblies/UnityEditor.TestRunner.dll
+PC Build/Library/ScriptAssemblies/UnityEditor.SpatialTracking.pdb
+PC Build/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll
+PC Build/Library/ScriptAssemblies/Unity.VSCode.Editor.pdb
+PC Build/Library/ScriptAssemblies/Unity.VSCode.Editor.dll
+PC Build/Library/ScriptAssemblies/Unity.Timeline.pdb
+PC Build/Library/ScriptAssemblies/Unity.Timeline.Editor.pdb
+PC Build/Library/ScriptAssemblies/Unity.Timeline.Editor.dll
+PC Build/Library/ScriptAssemblies/Unity.Timeline.dll
+PC Build/Library/ScriptAssemblies/Unity.Rider.Editor.pdb
+PC Build/Library/ScriptAssemblies/Unity.Rider.Editor.dll
+PC Build/Library/ScriptAssemblies/Unity.CollabProxy.Editor.pdb
+PC Build/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll
+PC Build/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.pdb
+PC Build/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll
+PC Build/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.pdb
+PC Build/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll
+PC Build/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.pdb
+PC Build/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll
+PC Build/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.pdb
+PC Build/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll
+PC Build/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.pdb
+PC Build/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll
+PC Build/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.pdb
+PC Build/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll
+PC Build/Library/ScriptAssemblies/Assembly-CSharp.pdb
+PC Build/Library/ScriptAssemblies/Assembly-CSharp.dll
+PC Build/Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+PC Build/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+PC Build/Library/LastSceneManagerSetup.txt
+PC Build/Library/InspectorExpandedItems.asset
+PC Build/Library/EditorUserBuildSettings.asset
+PC Build/Library/EditorSnapSettings.asset
+PC Build/Library/CurrentLayout-default.dwlt
+PC Build/Library/Artifacts/ff/ffbdafa788273016fa41702f5f904e86
+PC Build/Library/Artifacts/fb/fb0d39d8dcb51bf8342c46d8ff4abb5f
+PC Build/Library/Artifacts/f6/f68425abee6d74dd149a87d0e8a6aa82
+PC Build/Library/Artifacts/f5/f56bb6ac6561c60ef13684f5d3d786c7
+PC Build/Library/Artifacts/f0/f0e0b6a440aa9c2a0b2b85a59dd37ffa
+PC Build/Library/Artifacts/ec/ec471740f1b9a77681bee91ef3cd2d5a
+PC Build/Library/Artifacts/e7/e774af73d584e6f372e7942e18c1bc7e
+PC Build/Library/Artifacts/e4/e416849c16576a08f5543fde9e93b950
+PC Build/Library/Artifacts/e0/e07b2ed8f45c53d8a550ce8404365492
+PC Build/Library/Artifacts/d9/d973bbeabcaf0b31c7ab60effbe8b7c1
+PC Build/Library/Artifacts/d3/d3141e185cdcbb85cc90c8c6952c7b03
+PC Build/Library/Artifacts/d2/d286d7474ec94c1a1d93819308ed3bbb
+PC Build/Library/Artifacts/d2/d284755b641925bfb5a8c17a4299929a
+PC Build/Library/Artifacts/d1/d175af13a7758e304dee48f8fcc035c3
+PC Build/Library/Artifacts/cd/cdbd55ad7bb78f97895297f73b38c237
+PC Build/Library/Artifacts/cc/cca9b21ac009bd00b8eda298d13f7151
+PC Build/Library/Artifacts/c6/c68f767fd5cf454ad71bceb3f99474c4
+PC Build/Library/Artifacts/c4/c4f8a36c030267c32a249897708461d7
+PC Build/Library/Artifacts/c2/c28215174c341cfb34bf395128043e11
+PC Build/Library/Artifacts/c1/c1d6c931a76f21c4f404fc917f353d4c
+PC Build/Library/Artifacts/bf/bf7274903fb7f230116b2d1c5dae4cf1
+PC Build/Library/Artifacts/be/beecc5619e6315cdb2c31685e763a486
+PC Build/Library/Artifacts/b1/b171fcf38f7bba11ad21191fae2aadb4
+PC Build/Library/Artifacts/ab/ab0cb85343289cd2164433852424b162
+PC Build/Library/Artifacts/9d/9de9555a4d84e8807fb585a86747936c
+PC Build/Library/Artifacts/9a/9a0176cd844e42cb0b9ee1f35565a963
+PC Build/Library/Artifacts/98/98c3a541f7c83a8c4e4e9f3aa2140b9a
+PC Build/Library/Artifacts/94/94d35fea1e0e3da00ddf60e179ea671c
+PC Build/Library/Artifacts/8d/8d72337b7b28cf881028344bfb5f3c17
+PC Build/Library/Artifacts/8b/8b50330ba75b180033e7c30c7702a3d2
+PC Build/Library/Artifacts/8a/8a66075442242a3ed420998d16aefd47
+PC Build/Library/Artifacts/8a/8a58558e3f5b023a0a3cdbc6daca5b41
+PC Build/Library/Artifacts/8a/8a16328c63e3d3fe922b0a5cccef0373
+PC Build/Library/Artifacts/87/877e5014228a3f1a54e5fb7998580b11
+PC Build/Library/Artifacts/7d/7da333df3ef8943ccf4e7da109dbf183
+PC Build/Library/Artifacts/77/772f74ef5eab762e89c886da68cfea14
+PC Build/Library/Artifacts/74/740a15805b0adc6354225667cbcbf6d4
+PC Build/Library/Artifacts/6c/6c483d23a718616e0f5157a1b2e0b4bd
+PC Build/Library/Artifacts/66/66a7a19a475ea1e63ea2ad233b1e43d7
+PC Build/Library/Artifacts/64/6407be9ef801567a155f4a98ca92faf4
+PC Build/Library/Artifacts/62/624cf4c2c12d9832a0df7d4965281203
+PC Build/Library/Artifacts/57/57709087c4f273b041a21253aba4f275
+PC Build/Library/Artifacts/55/55bdc5b3606e04ad67611757540d8fa4
+PC Build/Library/Artifacts/54/54965a6162a256e46e00d5c646f3659d
+PC Build/Library/Artifacts/4d/4de83c1e0f2a343b688d2db33d6c8df1
+PC Build/Library/Artifacts/43/435e04c068ec92d97589eb1c73e7c521
+PC Build/Library/Artifacts/40/404448bba026015bb958e507b1a80b55
+PC Build/Library/Artifacts/38/38eaba97c710df4357a5743d82f2997b
+PC Build/Library/Artifacts/38/381942306fee35fc0b05425a5d4bf9b3
+PC Build/Library/Artifacts/37/3704e3ca850398b5e7c2dbbd744f9717
+PC Build/Library/Artifacts/2a/2a198cc15a8967f771d1aa7a235c2c69
+PC Build/Library/Artifacts/28/28a3ce6eee9f23d9be6db59295bdad80
+PC Build/Library/Artifacts/27/2760a519aeedf7b1248737e6caa69979
+PC Build/Library/Artifacts/25/25acb3157d4e6a985e7d09decb62dac0
+PC Build/Library/Artifacts/24/2488e226dd8711498fcbcdf30bd42a2c
+PC Build/Library/Artifacts/23/23006eb01756597151ffc38b512281d9
+PC Build/Library/Artifacts/21/215301db76ec20631bcdf72986eddabe
+PC Build/Library/Artifacts/1c/1ca08086a1e5d64c6d89049ad6de55a2
+PC Build/Library/Artifacts/1c/1c01307cc808cd97b432301aad8eed20
+PC Build/Library/Artifacts/0a/0a6f054a5711826455035df4d3e7ba95
+PC Build/Library/Artifacts/08/08015a1e7e6a2b4afa284fcdf9bbdaff
+PC Build/Library/Artifacts/07/07a5c6e99311e4863c73fe5929d3524a
+PC Build/Library/ArtifactDB
+PC Build/Library/APIUpdater/project-dependencies.graph
