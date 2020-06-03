@@ -9,6 +9,9 @@ using System.Net.Mail;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+#if UNITY_EDITOR || UNITY_STANDALONE
+using System.Windows.Forms;
+#endif
 
 public class ResultTable : MonoBehaviour {
 
@@ -47,6 +50,37 @@ public class ResultTable : MonoBehaviour {
             resultTable.GetComponent<Animation>().Play("Hide");
             TableOpen = false;
         }
+    }
+
+    public void GuardaPDF()
+    {
+        #if UNITY_EDITOR || UNITY_STANDALONE
+        string path = "";
+        SaveFileDialog dlg = new SaveFileDialog();
+        dlg.DefaultExt = ".pdf";
+        dlg.InitialDirectory = UnityEngine.Application.dataPath;
+        dlg.Filter = "Pdf documents (.pdf)|*.pdf";
+        dlg.FileName = "TablaResultados";
+
+        if (dlg.ShowDialog() == DialogResult.OK)
+        {
+            path = dlg.FileName;
+            PDFGenerated = false;
+            GeneraPDF(path);
+            if (PDFGenerated == true)
+            {
+                MessageConsole.Message = "El archivo se ha guardado correctamente";
+            }
+            path = "";
+            AnimTable();
+        }
+        else
+        {
+            path = "";
+            AnimTable();
+            MessageConsole.Message = "No se ha guardado el archivo";
+        }
+        #endif
     }
 
     public void MailPanel()

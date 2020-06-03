@@ -33,13 +33,13 @@ public class MoveMountedItems : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     void Update()
     {
-        if(RightClick == false && Rack.transform.position.x + 0.01 <= RackPlus)
+        if(RightClick == false && Rack.transform.position.x + 0.07 <= RackPlus)
         {
-            Rack.transform.position += new Vector3(0.01f, 0, 0);
+            Rack.transform.position += new Vector3(0.07f, 0, 0);
         }
-        else if(LeftClik == false && Rack.transform.position.x - 0.01 >= RackMinus)
+        else if(LeftClik == false && Rack.transform.position.x - 0.07 >= RackMinus)
         {
-            Rack.transform.position -= new Vector3(0.01f, 0, 0);
+            Rack.transform.position -= new Vector3(0.07f, 0, 0);
         }
     }
 }

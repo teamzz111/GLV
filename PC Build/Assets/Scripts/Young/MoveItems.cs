@@ -81,31 +81,31 @@ public class MoveItems : MonoBehaviour {
         {
             if (Input.GetKey(KeyCode.RightArrow) || MoveControls.RightClick == false)
             {
-                WhatObject.transform.position += new Vector3(0.01f, 0, 0);
+                WhatObject.transform.position += new Vector3(0.07f, 0, 0);
             }
             else if (Input.GetKey(KeyCode.LeftArrow) || MoveControls.LeftClik == false)
             {
-                WhatObject.transform.position -= new Vector3(0.01f, 0, 0);
+                WhatObject.transform.position -= new Vector3(0.07f, 0, 0);
             }
             else if (Input.GetKey(KeyCode.UpArrow) || MoveControls.TopClick == false)
             {
-                WhatObject.transform.position += new Vector3(0, 0, 0.01f);
+                WhatObject.transform.position += new Vector3(0, 0, 0.07f);
             }
             else if (Input.GetKey(KeyCode.DownArrow) || MoveControls.BottomClick == false)
             {
-                WhatObject.transform.position -= new Vector3(0, 0, 0.01f);
+                WhatObject.transform.position -= new Vector3(0, 0, 0.07f);
             }
             else if (Input.GetKey(KeyCode.Z) || MoveControls.Rotate1Click == false)
             {
-                WhatObject.transform.Rotate(Vector3.up);
+                WhatObject.transform.Rotate(Vector3.up * 2);
             }
             else if (Input.GetKey(KeyCode.X) || MoveControls.Rotate2Click == false)
             {
-                WhatObject.transform.Rotate(Vector3.down);
+                WhatObject.transform.Rotate(Vector3.down * 2);
             }
             else if (Input.GetKey(KeyCode.C) || MoveControls.CenterClick == false)
             {
-                WhatObject.transform.position += new Vector3(0, 0.04f, 0);
+                WhatObject.transform.position += new Vector3(0, 0.3f, 0);
                 WhatObject.transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
