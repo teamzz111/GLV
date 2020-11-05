@@ -189,23 +189,23 @@ public class Young : MonoBehaviour {
 
     public void ChangeButAction()
     {
-        if (ChangeResultBut.text.Equals("Lambda"))
+        if (ChangeResultBut.text.Equals("y"))
         {
             SendChange = "1";
             SetValuey.text = "0";
             LambdaText.text = "";
-            ChangeResultBut.text = "y";
+            ChangeResultBut.text = "Lambda";
             isYChecked = false;
             isLambdaChecked = true;
             ChangeResultConstant.text = "y(m)";
             ChangeResultPrediction.text = "Lambda(nm)";
         }
-        else if (ChangeResultBut.text.Equals("y"))
+        else if (ChangeResultBut.text.Equals("Lambda"))
         {
             SendChange = "0";
             SetValuey.text = "0";
             LambdaText.text = "";
-            ChangeResultBut.text = "Lambda";
+            ChangeResultBut.text = "y";
             isYChecked = true;
             isLambdaChecked = false;
             ChangeResultConstant.text = "Lambda(nm)";
