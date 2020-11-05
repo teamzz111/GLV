@@ -57,6 +57,7 @@ public class Young : MonoBehaviour {
     public static string Sendd;
     public static string SendChange = "0";
 
+    private bool lambdaCorrect = false;
     private bool isYChecked = true;
     private bool isLambdaChecked = false;
     public Text ChangeResultBut;
@@ -74,8 +75,24 @@ public class Young : MonoBehaviour {
         {
             L = (RackPlus - Rack.transform.position.x) * 0.2f;
             SetValueL.text = L.ToString("f3");
-            if (!string.IsNullOrEmpty(NText.text) && !string.IsNullOrEmpty(LambdaText.text) && !string.IsNullOrEmpty(mText.text))
+            if( !string.IsNullOrEmpty(LambdaText.text) && isYChecked)
+            { 
+                if((float)Convert.ToDouble(LambdaText.text) <= 700 && (float)Convert.ToDouble(LambdaText.text) >= 400) 
+                {
+                    lambdaCorrect=true;
+                }
+                else
+                {
+                    lambdaCorrect=false;
+                    MessageConsole.Message = "Debe ingresar un valor de lambda entre 400 y 700";
+                    DisableLaser();
+                }
+            }
+                      
+              
+            if (!string.IsNullOrEmpty(NText.text) && !string.IsNullOrEmpty(LambdaText.text) && !string.IsNullOrEmpty(mText.text) && lambdaCorrect)
             {
+      
                 try
                 {
                     if (isYChecked)
@@ -102,8 +119,9 @@ public class Young : MonoBehaviour {
 
                             if (isYChecked)
                             {
-                                y = (m * (Lambda / 1000000000f) * L) / d;
-                                SetValuey.text = y.ToString("f4");
+                             
+                                    y = (m * (Lambda / 1000000000f) * L) / d;
+                                    SetValuey.text = y.ToString("f4");
                             }
                             else if (isLambdaChecked)
                             {
