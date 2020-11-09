@@ -307,6 +307,12 @@
  <Reference Include="Unity.Analytics.StandardEvents">
  <HintPath>D:/Unity/GLV/PC Build/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
+ <Reference Include="System.Windows.Forms">
+ <HintPath>D:/Unity/GLV/PC Build/Assets/Plugins/System.Windows.Forms.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Deployment">
+ <HintPath>D:/Unity/GLV/PC Build/Assets/Plugins/System.Deployment.dll</HintPath>
+ </Reference>
  <Reference Include="nunit.framework">
  <HintPath>D:/Unity/GLV/PC Build/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>

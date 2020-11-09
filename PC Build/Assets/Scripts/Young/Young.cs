@@ -14,9 +14,9 @@ public class Young : MonoBehaviour {
     public TextMeshProUGUI ChangeResultConstant;
     public TextMeshProUGUI ChangeResultPrediction;
 
-    public InputField NText;
-    public InputField LambdaText;
-    public InputField mText;
+    public TMP_InputField  NText;
+    public TMP_InputField  LambdaText;
+    public TMP_InputField  mText;
     
     public GameObject LaserPrincipal;
     public GameObject Laser1A; public GameObject Pointer1A;
