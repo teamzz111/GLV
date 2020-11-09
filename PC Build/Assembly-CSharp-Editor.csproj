@@ -292,9 +292,6 @@
  <Reference Include="System.Drawing">
  <HintPath>D:/Unity/GLV/PC Build/Assets/Plugins/System.Drawing.dll</HintPath>
  </Reference>
- <Reference Include="System.Windows.Forms">
- <HintPath>D:/Unity/GLV/PC Build/Assets/Plugins/System.Windows.Forms.dll</HintPath>
- </Reference>
  <Reference Include="TextMeshPro-2017.3-Editor">
  <HintPath>D:/Unity/GLV/PC Build/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Editor.dll</HintPath>
  </Reference>
