@@ -84,7 +84,6 @@ public class Young : MonoBehaviour {
                 else
                 {
                     lambdaCorrect=false;
-                    MessageConsole.Message = "Debe ingresar un valor de lambda entre 400 y 700";
                     DisableLaser();
                 }
             }
