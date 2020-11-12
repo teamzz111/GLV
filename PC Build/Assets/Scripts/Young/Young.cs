@@ -196,7 +196,7 @@ public class Young : MonoBehaviour {
             ChangeResultBut.text = "Lambda";
             isYChecked = false;
             isLambdaChecked = true;
-            ChangeResultConstant.text = "y(m)";
+            ChangeResultConstant.text = "Z";
             ChangeResultPrediction.text = "Lambda(nm)";
         }
         else if (ChangeResultBut.text.Equals("Lambda"))
@@ -208,7 +208,7 @@ public class Young : MonoBehaviour {
             isYChecked = true;
             isLambdaChecked = false;
             ChangeResultConstant.text = "Lambda(nm)";
-            ChangeResultPrediction.text = "y(m)";
+            ChangeResultPrediction.text = "Z";
         }
         
     }
